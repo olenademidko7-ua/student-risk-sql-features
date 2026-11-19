@@ -9,6 +9,7 @@ Within the team, I wrote the SQL queries (PostgreSQL) that turn raw student acti
 ## Features
 
 | File | Feature | Risk signal |
+|---|---|---|
 | `01_missed_homework_count.sql` | `missed_homework_count` | Number of homework assignments past the deadline and never submitted |
 | `02_late_homework_count.sql` | `late_homework_count` | Number of homework submissions after the deadline |
 | `03_submission_timing_shift.sql` | `submission_timing_shift` | Change in average submission delay, first half vs second half of a student's submissions |
