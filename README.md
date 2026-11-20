@@ -37,3 +37,52 @@ Each feature answers a different question about a student, and together they cov
 | Engagement | `last_message_days_ago` | Has the student gone quiet? |
 
 A single signal can be noise (one late homework, one quiet week). Several signals pointing the same way are what a mentor should look at first. The features are designed to be combined into a risk score that ranks students, so mentors check the most at-risk ones first.
+
+## Evaluation Metrics
+
+During the hackathon, we applied two main metrics: **AUC** and **Dropout Recall**.
+
+> Note: "Dropout" here refers to student dropout (a student leaving their studies), not the regularization technique used in neural networks.
+
+### Dropout Recall 
+
+Recall shows what share of the students who actually dropped out the model was able to find among all real dropout cases.
+
+```
+Recall = TP / (TP + FN)
+```
+where:
+```
+AUC-ROC = integral from 0 to 1 of TPR(FPR) dFPR
+```
+### AUC (Area Under the ROC Curve)
+
+In simple terms, AUC shows whether the model can correctly distinguish "at-risk" students from "not at-risk" students.
+
+AUC is the area under the ROC curve. It evaluates the quality of a binary classifier and shows how well the model separates the positive and negative classes. Its value ranges from 0 to 1:
+
+- **1.0:** a perfect model;
+- **0.5:** the model performs no better than random guessing.
+
+Formally, AUC is the integral of the True Positive Rate (TPR) with respect to the False Positive Rate (FPR) across all classification thresholds from 0 to 1:
+
+```
+AUC-ROC = integral from 0 to 1 of TPR(FPR) dFPR
+```
+
+The ROC curve plots TPR (y-axis) against FPR (x-axis) at varying decision thresholds.
+
+```
+TPR = TP / (TP + FN)
+FPR = FP / (FP + TN)
+```
+where TP = True Positives, FN = False Negatives, FP = False Positives, and TN = True Negatives.
+
+Note that TPR is the same as Recall (also known as Sensitivity).
+
+### Source
+https://educationaldatamining.org/edm2024/proceedings/2024.EDM-short-papers.32/index.html
+
+
+
+
